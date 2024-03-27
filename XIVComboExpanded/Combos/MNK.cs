@@ -505,6 +505,66 @@ namespace XIVComboExpandedestPlugin.Combos
         }
     }
 
+    internal class MonkDemolishFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkDemolishFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == MNK.Demolish)
+            {
+                if (TargetHasEffect(MNK.Debuffs.Demolish))
+                    return MNK.SnapPunch;
+
+
+                return OriginalHook(MNK.Demolish);
+            }
+            return actionID;
+        }
+    }
+
+//    internal class MonkTwinSnakesFeature : CustomCombo
+//    {
+//        protected override CustomComboPreset Preset => CustomComboPreset.MonkTwinSnakesFeature;
+//
+//        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+//        {
+ //           if (actionID == MNK.TwinSnakes)
+ //           {
+//               if (HasEffect(MNK.Buffs.PerfectBalance) || HasEffect(MNK.Buffs.FormlessFist))
+//                {
+//                    if (!HasEffect(MNK.Buffs.TwinSnakes))
+ //                       return MNK.TwinSnakes;
+ //                   if (lastComboMove == MNK.Bootshine)
+ //                       return MNK.TrueStrike;
+//                    return OriginalHook(MNK.TwinSnakes);
+ //               }
+ //               if (HasEffect(MNK.Buffs.TwinSnakes) && lastComboMove == MNK.Bootshine)
+  //                  return MNK.TrueStrike;
+  //              return MNK.TwinSnakes;
+  //          }
+
+   //         return actionID;
+  //      }
+ //   }
+
+    internal class MonkTwinSnakesFeature : CustomCombo
+    {
+        protected override CustomComboPreset Preset => CustomComboPreset.MonkTwinSnakesFeature;
+
+        protected override uint Invoke(uint actionID, uint lastComboMove, float comboTime, byte level)
+        {
+            if (actionID == MNK.TwinSnakes)
+            {
+                if (lastComboMove == MNK.Bootshine)
+                    return MNK.TrueStrike;
+
+                return OriginalHook(MNK.TwinSnakes);
+            }
+            return actionID;
+        }
+    }
+
     internal unsafe class MyMNKGauge
     {
         private readonly IntPtr address;
