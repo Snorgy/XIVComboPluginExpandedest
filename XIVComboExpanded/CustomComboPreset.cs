@@ -787,6 +787,14 @@ namespace XIVComboExpandedestPlugin
         [CustomComboInfo("Form Shift Option", "Enabling this option makes it so that Form Shift does not turn into Snap Punch.", MNK.JobID, MNK.FormShift)]
         MonkSTComboFormOption = 2008,
 
+        [OrderedEnum]
+        [CustomComboInfo("Demolish Feature", "Demolish becomes Snap Punch while the DoT is active on your target.", MNK.JobID, MNK.Demolish)]
+        MonkDemolishFeature = 2030,
+
+        [OrderedEnum]
+        [CustomComboInfo("Twin Snakes Feature", "Twin Snakes becomes True Strike after a Bootshine.", MNK.JobID, MNK.TwinSnakes)]
+        MonkTwinSnakesFeature = 2031,
+        
         #endregion
         // ====================================================================================
         #region NINJA
